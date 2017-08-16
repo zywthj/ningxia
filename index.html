@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>宁夏环境数据中心综合展示分析</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<script src="https://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
+	<script>
+		!window.jQuery && document.write('<script src="lib/jquery-3.2.1.min.js"><\/script>');
+	</script>
+	<script src="https://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+	<script src="lib/echarts.min.js"></script>
+	<script>
+		!window.highcharts && document.write('<script src="lib/highcharts.js"><\/script>');
+	</script>
+	<script src="lib/funnel.js"></script>
+	<!--[if IE 9]>
+	    <style type="text/css">
+	       .wrapper .top .water_auto .auto .monitor table thead tr{
+				line-height: 0px;
+	       }
+			.wrapper .top .water_auto .auto .monitor table thead tr .th2{
+				position: relative;
+				left: -15px;
+			}
+			.wrapper .top .water_auto .auto .monitor table thead tr .th3{
+				position: absolute;
+				left: 290px;
+				top: 20px;
+			}
+			.wrapper .top .water_auto .auto .monitor table tbody{
+				position: absolute;
+				width: 100%;
+				top: 30px;
+			}
+	    </style>
+   <![endif]-->
+</head>
+<body>
+<div class="head">
+	<div class="head_img"></div>
+</div>
+<div class="wrapper">
+	<img class="logo" src="images/logo.png">	
+	<!-- 上部 -->
+	<div class="top">
+		<div class="water_auto">
+			<div class="water item_map" index="0" id="water_envir">
+				<img class="title_bg head_common" src="images/common_head.png">
+				<strong>水环境</strong>
+				<img class="title_img" src="images/common_chart.png">
+				<div id="key_sections"></div>
+				<span class="one_lei">I类(1)</span>
+				<span class="two_lei">II类(11)</span>
+				<span class="three_lei">III类(5)</span>
+				<span class="four_lei">IV类(1)</span>
+				<span class="five_lei">劣V(1)</span>
+				<div id="water_level"></div>
+			</div>
+			<div class="auto item_map" index="1" id="autoLook">
+				<img class="title_bg head_common" src="images/common_head.png">
+				<strong>自动监控</strong>
+				<img class="title_img" src="images/common_chart.png">
+				<div class="monitor" id="auto_scroll">
+					<table class="t_head" cellpadding="0" cellspacing="0" border="0" >
+						<thead>
+							<tr>
+								<td>企业名称</td>
+								<td>超标指标</td>
+								<td>测量值 / 标准值</td>
+								<td>时间</td>
+							</tr>
+						</thead>
+					</table>
+					<div class="table_content">
+						<table id="table_c" cellpadding="0" cellspacing="0" border="0">a
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="map">
+			<span class="map_text1"></span>
+			<span class="map_text2"></span>
+			<span class="map_text3"><span class="map_title3"></span></span>
+			<span class="map_text4"><span class="map_title4"></span></span>
+			<img class="detail_img" src="images/pm2.5_detail.png">
+			<!-- 地图 -->
+			<div class="map_wrapper">
+				<img class="map_img" src="images/map.png">
+			</div>
+			<!-- 阴影 -->
+			<img class="map_bottom" src="images/map_bottom.png">
+		</div>
+		<div class="air_source">
+			<div class="air item_map" index="6" id="air_dirty">
+				<img class="title_bg head_common" src="images/common_head.png">
+				<strong>大气环境</strong>
+				<img class="title_img" src="images/air_chart.png">
+				<ul id="cityName">
+					<li class="active">银川市</li>
+					<li>石嘴山市</li>
+					<li>吴忠市</li>
+					<li>固原市</li>
+					<li>中卫市</li>
+				</ul>
+				<div id="mountain"></div>
+				<div id="gauge"></div>
+			</div>
+			<div class="source item_map" index="5" id="source_dirty">
+				<img class="title_bg head_common" src="images/common_head.png">
+				<strong>污染源</strong>
+				<img class="title_img" src="images/common_chart.png">
+				<div id="level"></div>
+				<div id="area"></div>
+			</div>
+		</div>
+	</div>
+	<!-- 下部 -->
+	<div class="bottom">
+		<div class="build item_map" index="2" id="build_work">
+			<strong>建设项目</strong>
+			<img class="title_img head_common" src="images/common_head.png">
+			<ul class="build_type">
+				<li><p>建设单位</p><span>6359</span></li>
+				<li><p>环评单位</p><span>917</span></li>
+				<li><p>环评项目</p><span>4106</span></li>
+				<li><p>竣工项目</p><span>1914</span></li>
+			</ul>
+			<div id="build"></div>
+		</div>
+		<div class="supervise item_map" index="3" id="supervise_all">
+			<img class="supervise_title" src="images/supervise_title.png">
+			<strong>公众监督</strong>
+			<div id="supervise"></div>
+		</div>
+		<div class="permission item_map" index="4" id="permission_card">
+			<strong>排污许可证</strong>
+			<img class="title_img head_common" src="images/common_head.png">
+			<span class="title_num">宁夏自治区企业排污许可证数量统计</span>
+			<span class="p_num1 p_num"></span><span class="p_num2 p_num"></span><span class="p_num3 p_num"></span><span class="p_num4 p_num"></span><span class="p_num5 p_num"></span>
+			<div id="permission"></div>
+		</div>
+	</div>
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>
